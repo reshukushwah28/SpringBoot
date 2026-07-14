@@ -5,29 +5,53 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MyPortfolio {
+
     @GetMapping("/myself")
-    public String Myself(){
+    public String myself() {
         return """
                 <h1>Myself</h1>
-                <p>Hi, I'm Reshu kushwah!
-                
-                   💫 Aspiring Developer | Tech Enthusiast | Lifelong Learner
-                
-                   🌱 Passionate about coding, creativity, and continuous growth
-                   💻 Love building projects and solving real-world problems
-                   🚀 Working towards becoming a skilled software developer </p>
+
+                <p>
+                    Hi, I'm <b>Reshu Kushwah</b>!
+                </p>
+
+                <p>
+                    💫 Aspiring Software Developer | Data Science Enthusiast | Lifelong Learner
+                </p>
+
+                <p>
+                    🌱 Passionate about Artificial Intelligence, Data Science and Software Development.<br>
+                    💻 Love building real-world projects and solving challenging problems.<br>
+                    🚀 Continuously improving my programming, DSA and development skills.
+                </p>
+
                 <ul>
-                    <li>Github Link : https://github.com/reshukushwah28/li>
-                    <li>Leetcode Link: https://leetcode.com/u/reshu_kushwah28//</li>  
+                    <li><b>LinkedIn:</b> https://www.linkedin.com/in/reshu-kushwah/</li>
+                    <li><b>GitHub:</b> https://github.com/reshukushwah28</li>
+                    <li><b>LeetCode:</b> https://leetcode.com/u/reshu_kushwah28/</li>
+                    <li><b>Email:</b> reshukushwah234@gmail.com</li>
                 </ul>
                 """;
     }
 
-    @GetMapping("/Skills")
-    public String skills(){
+    @GetMapping("/skills")
+    public String skills() {
         return """
-                <h1> My Skills </h1>
-                
+                <h1>My Skills</h1>
+
+                <ul>
+                    <li><b>Languages:</b> Java, Python, C, SQL, HTML, CSS</li>
+
+                    <li><b>Data Science:</b> Pandas, NumPy, Scikit-Learn, Seaborn</li>
+
+                    <li><b>Visualization:</b> Power BI, Matplotlib, MS Excel</li>
+
+                    <li><b>Tools:</b> Git, GitHub, Google Colab, Jupyter Notebook, Visual Studio Code</li>
+
+                    <li><b>Soft Skills:</b> Leadership, Problem Solving, Communication, Adaptability, Analytical Thinking</li>
+                </ul>
                 """;
     }
+
+
 }
