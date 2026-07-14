@@ -53,5 +53,41 @@ public class MyPortfolio {
                 """;
     }
 
+    @GetMapping("/education")
+    public String education() {
+        return """
+                <h1>Education</h1>
+
+                <ul>
+
+                    <li>
+                        <h3>Lovely Professional University, Punjab</h3>
+                        <p>Bachelor of Technology - Computer Science and Engineering</p>
+                        <p>CGPA : 7.82</p>
+                        <p>Aug 2023 - Present</p>
+                    </li>
+
+                    <br>
+
+                    <li>
+                        <h3>Saint Vivekanand Senior Secondary Public School, Etawah</h3>
+                        <p>Intermediate</p>
+                        <p>Percentage : 85%</p>
+                        <p>2022 - 2023</p>
+                    </li>
+
+                    <br>
+
+                    <li>
+                        <h3>Saint Vivekanand Senior Secondary Public School, Etawah</h3>
+                        <p>Matriculation</p>
+                        <p>Percentage : 80%</p>
+                        <p>2020 - 2021</p>
+                    </li>
+
+                </ul>
+                """;
+    }
+
 
 }
