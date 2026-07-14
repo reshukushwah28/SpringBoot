@@ -89,5 +89,50 @@ public class MyPortfolio {
                 """;
     }
 
+    @GetMapping("/project")
+    public String project() {
+        return """
+                <h1>Projects</h1>
 
+                <h2>1. Zestify AI</h2>
+
+                <ul>
+                    <li>Developed an AI-powered web application using the Google Gemini API for intelligent text generation and image understanding.</li>
+
+                    <li>Designed a responsive user interface using React.js, TypeScript and Tailwind CSS.</li>
+
+                    <li>Improved application performance using lazy loading and code splitting.</li>
+
+                    <li><b>Tech Stack:</b> React.js, TypeScript, Tailwind CSS, Gemini API, Git, Netlify</li>
+                </ul>
+
+                <hr>
+
+                <h2>2. Obesity Intelligence Platform</h2>
+
+                <ul>
+                    <li>Built an end-to-end machine learning application to predict obesity levels with 92% accuracy.</li>
+
+                    <li>Implemented multiple machine learning algorithms for classification and regression.</li>
+
+                    <li>Integrated SHAP Explainable AI with an interactive Streamlit dashboard.</li>
+
+                    <li><b>Tech Stack:</b> Python, Scikit-Learn, Pandas, NumPy, SHAP, Streamlit, Matplotlib</li>
+                </ul>
+
+                <hr>
+
+                <h2>3. Public Libraries Dashboard</h2>
+
+                <ul>
+                    <li>Created an end-to-end data analytics pipeline using Python and SQL.</li>
+
+                    <li>Designed interactive Power BI dashboards with advanced DAX calculations.</li>
+
+                    <li>Improved reporting efficiency and data visualization for library management.</li>
+
+                    <li><b>Tech Stack:</b> Python, SQL, Power BI, Excel</li>
+                </ul>
+                """;
+    }
 }
