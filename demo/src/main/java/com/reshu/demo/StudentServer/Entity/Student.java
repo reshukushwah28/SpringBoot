@@ -1,4 +1,4 @@
-package com.reshu.demo.StudentServer;
+package com.reshu.demo.StudentServer.Entity;
 
 
 import jakarta.persistence.Entity;

@@ -1,5 +1,7 @@
-package com.reshu.demo.StudentServer;
+package com.reshu.demo.StudentServer.Service;
 
+import com.reshu.demo.StudentServer.Repository.StudentRepository;
+import com.reshu.demo.StudentServer.Entity.Student;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,5 +25,8 @@ public class StudentService {
 
         studentRepository.save(student);
         return student;
+    }
+    public Student getStudentById(int id){
+        return studentRepository.findById(id).orElse(null);
     }
 }
