@@ -2,12 +2,13 @@ package com.reshu.demo.StudentServer.Controller;
 
 import com.reshu.demo.StudentServer.DTO.CreateStudentRequestDTO;
 import com.reshu.demo.StudentServer.DTO.CreateStudentResponseDTO;
+import com.reshu.demo.StudentServer.DTO.UpdateStudentRequestDTO;
 import com.reshu.demo.StudentServer.Entity.Student;
 import com.reshu.demo.StudentServer.Service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.reshu.demo.StudentServer.DTO.UpdateStudentRequestDTO;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -24,10 +25,9 @@ public class StudentController {
     // CREATE
     @PostMapping("/create")
     public ResponseEntity<CreateStudentResponseDTO> createStudent(
-            @RequestBody CreateStudentRequestDTO requestDTO) {
+            @Valid @RequestBody CreateStudentRequestDTO requestDTO) {
 
-        CreateStudentResponseDTO response =
-                studentService.createStudent(requestDTO);
+        CreateStudentResponseDTO response = studentService.createStudent(requestDTO);
 
         return ResponseEntity.status(201).body(response);
     }
@@ -49,7 +49,7 @@ public class StudentController {
     @PutMapping("/{id}")
     public ResponseEntity<?> updateStudent(
             @PathVariable int id,
-            @RequestBody UpdateStudentRequestDTO requestDTO) {
+            @Valid @RequestBody UpdateStudentRequestDTO requestDTO) {
 
         Student updatedStudent = studentService.updateStudent(id, requestDTO);
 
