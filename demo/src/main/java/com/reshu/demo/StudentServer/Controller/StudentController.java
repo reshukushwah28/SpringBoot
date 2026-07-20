@@ -7,6 +7,7 @@ import com.reshu.demo.StudentServer.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.reshu.demo.StudentServer.DTO.UpdateStudentRequestDTO;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -46,10 +47,11 @@ public class StudentController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateStudent(@PathVariable int id,
-                                           @RequestBody Student student) {
+    public ResponseEntity<?> updateStudent(
+            @PathVariable int id,
+            @RequestBody UpdateStudentRequestDTO requestDTO) {
 
-        Student updatedStudent = studentService.updateStudent(id, student);
+        Student updatedStudent = studentService.updateStudent(id, requestDTO);
 
         if (updatedStudent == null) {
             return ResponseEntity.status(404).body("Student not found");

@@ -7,6 +7,8 @@ import com.reshu.demo.StudentServer.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.reshu.demo.StudentServer.DTO.UpdateStudentRequestDTO;
+
 @Service
 public class StudentService {
 
@@ -33,7 +35,7 @@ public class StudentService {
     }
 
     // UPDATE STUDENT
-    public Student updateStudent(int id, Student student) {
+    public Student updateStudent(int id, UpdateStudentRequestDTO requestDTO) {
 
         Student existingStudent = studentRepository.findById(id).orElse(null);
 
@@ -41,9 +43,8 @@ public class StudentService {
             return null;
         }
 
-        existingStudent.setName(student.getName());
-        existingStudent.setAge(student.getAge());
-        existingStudent.setDepartment(student.getDepartment());
+        existingStudent.setName(requestDTO.getName());
+        existingStudent.setAge(requestDTO.getAge());
 
         return studentRepository.save(existingStudent);
     }
@@ -86,4 +87,5 @@ public class StudentService {
 
         return responseDTO;
     }
+
 }
