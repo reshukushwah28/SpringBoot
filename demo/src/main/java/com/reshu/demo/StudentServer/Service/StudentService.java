@@ -1,56 +1,89 @@
 package com.reshu.demo.StudentServer.Service;
 
-import com.reshu.demo.StudentServer.Repository.StudentRepository;
+import com.reshu.demo.StudentServer.DTO.CreateStudentRequestDTO;
+import com.reshu.demo.StudentServer.DTO.CreateStudentResponseDTO;
 import com.reshu.demo.StudentServer.Entity.Student;
+import com.reshu.demo.StudentServer.Repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
-    StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
+    @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    public Student studentValidate(Student student){
-        int id = student.getId();
-        String name = student.getName();
-        int age = student.getAge();
-        String department = student.getDepartment();
+    // CREATE STUDENT
+    public CreateStudentResponseDTO createStudent(CreateStudentRequestDTO requestDTO) {
 
-        if(id < 0 || name == null || age < 0 || department == null){
-            return null;
-        }
+        Student student = mapToStudent(requestDTO);
 
-        studentRepository.save(student);
-        return student;
+        student = studentRepository.save(student);
+
+        return mapToResponseDTO(student);
     }
-    public Student getStudentById(int id){
+
+    // GET STUDENT BY ID
+    public Student getStudentById(int id) {
         return studentRepository.findById(id).orElse(null);
     }
-    public Student updateStudent(int id, Student newStudent) {
 
-        Student student = studentRepository.findById(id).orElse(null);
+    // UPDATE STUDENT
+    public Student updateStudent(int id, Student student) {
 
-        if (student == null) {
+        Student existingStudent = studentRepository.findById(id).orElse(null);
+
+        if (existingStudent == null) {
             return null;
         }
 
-        student.setName(newStudent.getName());
-        student.setAge(newStudent.getAge());
-        student.setDepartment(newStudent.getDepartment());
+        existingStudent.setName(student.getName());
+        existingStudent.setAge(student.getAge());
+        existingStudent.setDepartment(student.getDepartment());
 
-        return studentRepository.save(student);
+        return studentRepository.save(existingStudent);
     }
 
+    // DELETE STUDENT
     public boolean deleteStudent(int id) {
 
-        if (!studentRepository.existsById(id)) {
+        Student existingStudent = studentRepository.findById(id).orElse(null);
+
+        if (existingStudent == null) {
             return false;
         }
 
-        studentRepository.deleteById(id);
+        studentRepository.delete(existingStudent);
+
         return true;
+    }
+
+    // DTO -> ENTITY
+    private Student mapToStudent(CreateStudentRequestDTO requestDTO) {
+
+        Student student = new Student();
+
+        student.setName(requestDTO.getName());
+        student.setAge(requestDTO.getAge());
+        student.setDepartment(requestDTO.getDepartment());
+
+        return student;
+    }
+
+    // ENTITY -> DTO
+    private CreateStudentResponseDTO mapToResponseDTO(Student student) {
+
+        CreateStudentResponseDTO responseDTO = new CreateStudentResponseDTO();
+
+        responseDTO.setId(student.getId());
+        responseDTO.setName(student.getName());
+        responseDTO.setAge(student.getAge());
+        responseDTO.setDepartment(student.getDepartment());
+
+        return responseDTO;
     }
 }
