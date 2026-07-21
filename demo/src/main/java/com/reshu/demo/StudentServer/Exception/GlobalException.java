@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalException {
 
-    // Handles all RuntimeExceptions
+    // Unchecked Exception Handler (RuntimeException)
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
+    public ResponseEntity<String> handleUncheckedException(RuntimeException e) {
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(e.getMessage());
+                .status(HttpStatus.BAD_REQUEST)
+                .body("Unchecked Exception: " + e.getMessage());
     }
 
-    // Handles all other Exceptions
+    // Checked Exception Handler (Exception)
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception e) {
+    public ResponseEntity<String> handleCheckedException(Exception e) {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(e.getMessage());
+                .body("Checked Exception: " + e.getMessage());
     }
 }
