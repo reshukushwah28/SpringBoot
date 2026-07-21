@@ -14,4 +14,6 @@ public class CreateStudentResponseDTO {
     private int age;
 
     private String department;
+
+    private String email;
 }

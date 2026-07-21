@@ -19,6 +19,7 @@ public class Student {
     private String name;
     private int age;
     private String department;
+    private String email;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -56,6 +57,14 @@ public class Student {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDateTime getCreatedAt() {
