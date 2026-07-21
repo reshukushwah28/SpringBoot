@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.reshu.demo.StudentServer.DTO.UpdateStudentRequestDTO;
 
+import java.util.Optional;
+
 @Service
 public class StudentService {
 
@@ -30,8 +32,11 @@ public class StudentService {
     }
 
     // GET STUDENT BY ID
-    public Student getStudentById(int id) {
-        return studentRepository.findById(id).orElse(null);
+    public Student getStudentById(int id) throws Exception {
+        Optional<Student> student = studentRepository.findById(id);
+        return student.get();
+//        return studentRepository.findById(id).orElse(null);
+
     }
 
     // UPDATE STUDENT

@@ -34,13 +34,13 @@ public class StudentController {
 
     // GET BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStudent(@PathVariable int id) {
+    public ResponseEntity<?> getStudent(@PathVariable int id) throws Exception{
 
-        Student student = studentService.getStudentById(id);
+        Student student = studentService.getStudentById(id) ;
 
-        if (student == null) {
-            return ResponseEntity.status(404).body("Student not found");
-        }
+//        if (student == null) {
+//            return ResponseEntity.status(404).body("Student not found");
+//        }
 
         return ResponseEntity.ok(student);
     }
